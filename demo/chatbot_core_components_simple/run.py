@@ -1,6 +1,6 @@
 import gradio as gr
 import os
-import random
+import secrets
 
 # Chatbot demo with multimodal input (text, markdown, LaTeX, code blocks, image, audio, & video). Plus shows support for streaming text.
 
@@ -44,7 +44,7 @@ def bot(history, response_type):
         history[-1][1] = gr.Audio("https://github.com/gradio-app/gradio/raw/main/test/test_files/audio_sample.wav")
     elif response_type == "html":
         history[-1][1] = gr.HTML(
-            html_src(random.choice(["harmful", "neutral", "beneficial"]))
+            html_src(secrets.choice(["harmful", "neutral", "beneficial"]))
         )
     else:
         history[-1][1] = "Cool!"

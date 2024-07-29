@@ -1,7 +1,7 @@
 import gradio as gr
 import os
 import plotly.express as px
-import random
+import secrets
 
 # Chatbot demo with multimodal input (text, markdown, LaTeX, code blocks, image, audio, & video). Plus shows support for streaming text.
 
@@ -188,7 +188,7 @@ def bot(history, response_type):
         history[-1][1] = (os.path.join("files", "sample.txt"), "description")
     elif response_type == "html":
         history[-1][1] = gr.HTML(
-            html_src(random.choice(["harmful", "neutral", "beneficial"]))
+            html_src(secrets.choice(["harmful", "neutral", "beneficial"]))
         )
     else:
         history[-1][1] = txt
