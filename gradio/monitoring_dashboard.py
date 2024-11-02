@@ -1,9 +1,9 @@
-import random
 import time
 
 import pandas as pd
 
 import gradio as gr
+import secrets
 
 data = {"data": {}}
 
@@ -76,16 +76,15 @@ with gr.Blocks() as demo:
 
 if __name__ == "__main__":
     data["data"] = {
-        random.randint(0, 1000000): {
-            "time": time.time() - random.randint(0, 60 * 60 * 24 * 3),
-            "status": random.choice(
-                ["success", "success", "failure", "pending", "queued"]
+        secrets.SystemRandom().randint(0, 1000000): {
+            "time": time.time() - secrets.SystemRandom().randint(0, 60 * 60 * 24 * 3),
+            "status": secrets.choice(["success", "success", "failure", "pending", "queued"]
             ),
-            "function": random.choice(["predict", "chat", "chat"]),
-            "process_time": random.randint(0, 10),
-            "session_hash": str(random.randint(0, 4)),
+            "function": secrets.choice(["predict", "chat", "chat"]),
+            "process_time": secrets.SystemRandom().randint(0, 10),
+            "session_hash": str(secrets.SystemRandom().randint(0, 4)),
         }
-        for r in range(random.randint(100, 200))
+        for r in range(secrets.SystemRandom().randint(100, 200))
     }
 
     demo.launch()
