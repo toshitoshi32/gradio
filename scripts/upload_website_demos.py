@@ -33,7 +33,7 @@ def space_exists(space_id):
         for _ in range(5):
             with warnings.catch_warnings():
                 warnings.filterwarnings("ignore")
-                r = requests.head(url, timeout=3, verify=False)
+                r = requests.head(url, timeout=3, verify=True)
             if r.status_code == 200:
                 return True
             time.sleep(0.500)
